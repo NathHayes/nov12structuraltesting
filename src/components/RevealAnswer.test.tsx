@@ -15,7 +15,7 @@ export function expectHintIsPresent(shouldBeThere: boolean): void {
 
 describe("Reveal Answer", () => {
     beforeEach(() => {
-        render(<RevealAnswer />);
+        render(<RevealAnswer answer={42} />);
     });
 
     test("Answer field is shown", () => {

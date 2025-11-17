@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-export function RevealAnswer(): React.JSX.Element {
+interface answer {
+    answer: number;
+}
+
+export function RevealAnswer(props: answer): React.JSX.Element {
     const [answerVisible, setanswerVisible] = useState<boolean>(false);
     const [answerHintVisible, setanswerHintVisible] = useState<boolean>(false);
 
@@ -23,7 +27,7 @@ export function RevealAnswer(): React.JSX.Element {
 
     return (
         <div>
-            Answer: {answerVisible && 42}
+            Answer: {answerVisible && props.answer}
             {answerHintVisible ? "the hint" : ""}
             <span>
                 <Button onClick={toggleHintVisibility}>
