@@ -23,6 +23,15 @@ describe("Reveal Answer", () => {
         expectAnswerIsPresent(false);
     });
 
+    // Click "Toggle Hint Answer Visibility" button
+
+    test("There is a Toggle Answer Visibility button", () => {
+        const toggleHintAnswerButton = screen.getByRole("button", {
+            name: /Toggle Hint Visibility/i,
+        });
+        expect(toggleHintAnswerButton).toBeInTheDocument();
+    });
+
     // Click "Toggle Answer Visibility" button
 
     test("There is a Toggle Answer Visibility button", () => {
@@ -44,7 +53,7 @@ describe("Reveal Answer", () => {
         expectAnswerIsPresent(true);
     });
 
-    // /*
+    ///*
     // Click Toggle Answer Visibility button, system shows answer
     test("Click Toggle Answer Visibility button, click answer button again, system hides answer", async () => {
         const toggleAnswerButton = screen.getByRole("button", {
