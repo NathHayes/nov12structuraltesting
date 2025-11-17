@@ -7,6 +7,11 @@ export function expectAnswerIsPresent(shouldBeThere: boolean): void {
     if (shouldBeThere) expect(answerText).toBeInTheDocument();
     else expect(answerText).toBeNull();
 }
+export function expectHintIsPresent(shouldBeThere: boolean): void {
+    let hintText = screen.queryByText(/the hint/);
+    if (shouldBeThere) expect(hintText).toBeInTheDocument();
+    else expect(hintText).toBeNull();
+}
 
 describe("Reveal Answer", () => {
     beforeEach(() => {
@@ -25,11 +30,11 @@ describe("Reveal Answer", () => {
 
     // Click "Toggle Hint Answer Visibility" button
 
-    test("There is a Toggle Answer Visibility button", () => {
-        const toggleHintAnswerButton = screen.getByRole("button", {
+    test("There is a Toggle Hint Visibility button", () => {
+        const toggleHintButton = screen.getByRole("button", {
             name: /Toggle Hint Visibility/i,
         });
-        expect(toggleHintAnswerButton).toBeInTheDocument();
+        expect(toggleHintButton).toBeInTheDocument();
     });
 
     // Click "Toggle Answer Visibility" button
@@ -51,6 +56,18 @@ describe("Reveal Answer", () => {
         });
         //system shows answer
         expectAnswerIsPresent(true);
+    });
+
+    // Click Toggle Hint Visibility button, system shows answer
+    test("Click Toggle Hint Visibility button, system shows hint", async () => {
+        const toggleHintButton = screen.getByRole("button", {
+            name: /Toggle Hint Visibility/i,
+        });
+        await act(async () => {
+            toggleHintButton.click();
+        });
+        //system shows answer
+        expectHintIsPresent(true);
     });
 
     ///*

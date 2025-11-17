@@ -14,7 +14,7 @@ export function RevealAnswer(): React.JSX.Element {
     }
 
     function toggleHintVisibility() {
-        if (answerVisible) {
+        if (answerHintVisible) {
             setanswerHintVisible(false);
         } else {
             setanswerHintVisible(true);
@@ -29,6 +29,7 @@ export function RevealAnswer(): React.JSX.Element {
                 <Button onClick={toggleHintVisibility}>
                     Toggle Hint Visibility
                 </Button>
+
                 <Button onClick={toggleVisibility}>
                     Toggle Answer Visibility
                 </Button>
